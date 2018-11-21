@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import green from '@material-ui/core/colors/green';
-import red from '@material-ui/core/colors/red';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
@@ -36,7 +35,7 @@ function avatars(value, classes) {
   switch(value){
     case 'OPEN':
       return (<Avatar className={classes.greenAvatar}>O</Avatar>);
-    case 'CLOSE':
+    case 'CLOSED':
       return (<Avatar className={classes.redeAvatar}>C</Avatar>);
     default:
       return (<Avatar className={classes.orangeAvatar}>?</Avatar>);

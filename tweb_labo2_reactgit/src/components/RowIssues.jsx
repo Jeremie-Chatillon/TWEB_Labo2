@@ -12,9 +12,27 @@ import IssueAvatar from './IssueAvatar';
 const styles = {
   root: {
     //display: 'flex',
-    //flex: 'row',
-    //borderColor: '#d6d7da',
+    flex: 1,
+    minWidth: 0,
     },
+    status: {
+      
+      //borderColor: '#d6d7da',
+      //width: '20%',
+      },
+      data: {
+        withSpace: 'nowrap',
+        
+        overflow: 'hidden',
+        textOverflow: "ellipsis",
+       
+        //borderColor: '#d6d7da',
+        //width: '65%',
+      },
+      comments: {
+        //borderColor: '#d6d7da',
+        //width: '15%',
+      },
   };
 
 
@@ -23,18 +41,20 @@ function RowIssues(props) {
   
   return(
     <TableRow className={classes.root} onClick={onClick}>
-      <TableCell padding={'dense'}>
+      <TableCell padding={'dense'} className={classes.status}>
         <IssueAvatar value={status} />
       </TableCell>
-      <TableCell>
-        <Typography variant= {'h6'} padding={'dense'}>
-          {header}
-        </Typography>
-        <Typography variant= 'caption' >
-          {info}
-        </Typography>
+      <TableCell >
+        <div className={classes.data}>
+          <Typography variant={'h6'} padding={'dense'} >
+            {header}
+          </Typography>
+          <Typography variant= 'caption' noWrap={true}>
+            {info}
+          </Typography>
+        </div>
       </TableCell>
-      <TableCell padding={'dense'}>
+      <TableCell padding={'dense'} className={classes.comment}>
         <CommentsForm commentNumbers={commentNumbers}></CommentsForm>
       </TableCell>
     </TableRow>

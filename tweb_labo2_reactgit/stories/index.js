@@ -1,12 +1,22 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
+
 import CommentsForm from '../src/components/CommentsForm';
 import RowIssues from '../src/components/RowIssues';
 import TableIssues from '../src/components/TableIssues';
-import PaperContent from '../src/components/PaperContent';
 import IssueDescriptionheader from '../src/components/IssueDescriptionHeader';
 import IssueDescritpionPaper from '../src/components/IssueDescritpionPaper';
 import IssueAvatar from '../src/components/IssueAvatar';
+import TableSised from '../src/components/TableSised';
+import SelectList from '../src/components/SelectList';
+import SearchForm from '../src/components/SearchForm';
+import TextFieldCustom from '../src/components/TextFieldCustom';
+
 
 let id = 0;
 function createData(status, header, info, commentNumbers) {
@@ -14,12 +24,28 @@ function createData(status, header, info, commentNumbers) {
   return { id, status, header, info, commentNumbers};
 }
 
+function createDataList(value, text) {
+  id += 1;
+  return { id, value, text};
+}
+
 const rows = [
   createData('OPEN', 'Test1' , 'Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1', 3),
-  createData('CLOSE', 'Test2' , 'Ceci est l\'info de test 2', 31),
+  createData('CLOSED', 'Test2' , 'Ceci est l\'info de test 2', 31),
   createData('OPEN', 'Test3' , 'Ceci est l\'info de test 3', 32),
-  createData('CLOSE', 'Test4' , 'Ceci est l\'info de test 4', 0),
+  createData('CLOSED', 'Test4' , 'Ceci est l\'info de test 4', 0),
   createData(1, 'Test5' , 'Ceci est l\'info de test 5', 21),
+  createData('OPEN', 'Test1' , 'Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1', 3),
+  createData('CLOSED', 'Test2' , 'Ceci est l\'info de test 2', 31),
+  createData('OPEN', 'Test3' , 'Ceci est l\'info de test 3', 32),
+  createData('CLOSED', 'Test4' , 'Ceci est l\'info de test 4', 0),
+  createData(1, 'Test5' , 'Ceci est l\'info de test 5', 21),
+];
+
+const rowsList = [
+  createDataList('NULL', 'All'),
+  createDataList('CLOSED', 'Close'),
+  createDataList('OPEN', 'Open'),
 ];
 
 
@@ -37,8 +63,8 @@ storiesOf('CommentsForm', module)
   .add('OPEN', () => (
     <IssueAvatar value={'OPEN'}/>
   ))
-  .add('CLOSE', () => (
-    <IssueAvatar value={'CLOSE'}/>
+  .add('CLOSED', () => (
+    <IssueAvatar value={'CLOSED'}/>
   ));
 
   storiesOf('RowIssues', module)
@@ -52,7 +78,7 @@ storiesOf('CommentsForm', module)
   ))
   .add('Exemple 2', () => (
     <RowIssues
-      status = 'CLOSE'
+      status = 'CLOSED'
       info ='On a ecore des prblèmes, aidez-nous.'
       commentNumbers = '6'
       header = 'Encore des probleme CSS'
@@ -61,8 +87,25 @@ storiesOf('CommentsForm', module)
 
 storiesOf('TableIssues', module)
   .add('TableIssues', () => (
-      <TableIssues rows={rows}/>
+      <Router>
+
+      <Switch>
+        <Route default path="*" exact component={TableIssues} />
+        <Route
+        path="/issues" 
+        component={IssueDescritpionPaper}
+        />
+      </Switch>
+
+
+  </Router>
+      //<TableIssues rows={rows}/>
     ))
+
+storiesOf('TableSised', module)
+.add('TableSised', () => (
+    <TableSised rows={rows}/>
+  ))
 
 storiesOf('IssueDescriptionheader', module)
 .add('Exemple 1', () => (
@@ -79,3 +122,21 @@ storiesOf('IssueDescritpionPaper', module)
   .add('Exemple 2', () => (
     <IssueDescritpionPaper header={'This is a 2nd header'} text={'Tdsadxsahis is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.This is a issue content.'}/>
   ));  
+
+storiesOf('SelectList', module)
+.add('SelectList', () => (
+    <SelectList values={rowsList} title={'Filter status'}/>
+  ));
+
+storiesOf('TextFieldCustom', module)
+.add('name', () => (
+  <TextFieldCustom title={"name"}/>
+  ))
+  .add('First name', () => (
+    <TextFieldCustom title={"First name"}/>
+  ));
+
+  storiesOf('SearchForm', module)
+  .add('First name', () => (
+    <SearchForm title={"First name"}/>
+  ));

@@ -1,18 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-
-
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import IssueDescriptionHeader from './IssueDescriptionHeader';
-
-import TableIssues from './TableIssues';
 
 const styles = theme => ({
   root: {
@@ -28,9 +19,6 @@ const styles = theme => ({
     minWidth: 700,
   },
 });
-
-const issueHeader = 'hello, this is an issue header';
-const issueContent = 'hello, this is an issue body. you can display what you want inside';
 
 function IssueDescritpionPaper(props) {
   const { classes, header, text } = props;

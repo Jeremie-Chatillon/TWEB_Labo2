@@ -32,9 +32,9 @@ function createData(status, header, info, commentNumbers) {
 
 const rows = [
   createData('OPEN', 'Test1' , 'Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1Ceci est l\'info de test 1', 3),
-  createData('CLOSE', 'Test2' , 'Ceci est l\'info de test 2', 31),
+  createData('CLOSED', 'Test2' , 'Ceci est l\'info de test 2', 31),
   createData('OPEN', 'Test3' , 'Ceci est l\'info de test 3', 32),
-  createData('CLOSE', 'Test4' , 'Ceci est l\'info de test 4', 0),
+  createData('CLOSED', 'Test4' , 'Ceci est l\'info de test 4', 0),
   createData(1, 'Test5' , 'Ceci est l\'info de test 5', 21),
 ];
 function SimpleTable(props) {
