@@ -22,7 +22,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "homepage": "https://jeremie-chatillon.github.io/TWEB_Labo2/"
   },
   "eslintConfig": {
     "extends": "react-app"
