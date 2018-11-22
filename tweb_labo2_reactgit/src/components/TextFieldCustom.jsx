@@ -30,12 +30,9 @@ class TextFieldCustom extends React.Component {
   };
 
   handleChange = () => event => {
-    //if(this.props.handleChange !== null)
-      //this.props.handleChanges(event.target.value);
       console.log(this.props);
       this.props.onChanges(event.target.value);
       console.log(this.props);
-      //handleChanges(event.target.value);
   };
 
   render() {
